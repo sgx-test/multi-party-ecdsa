@@ -15,6 +15,7 @@
 */
 
 /// MtA is descrbied in https://eprint.iacr.org/2019/114.pdf section 3
+use std::prelude::v1::*;
 use curv::arithmetic::traits::Samplable;
 use curv::cryptographic_primitives::proofs::sigma_dlog::DLogProof;
 use curv::elliptic::curves::secp256_k1::{FE, GE};

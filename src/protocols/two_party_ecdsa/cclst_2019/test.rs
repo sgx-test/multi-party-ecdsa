@@ -1,5 +1,5 @@
 // For integration tests, please add your tests in /tests instead
-
+use std::prelude::v1::*;
 use super::*;
 use curv::elliptic::curves::traits::*;
 use curv::BigInt;

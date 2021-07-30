@@ -15,7 +15,7 @@
 
     @license GPL-3.0+ <https://github.com/KZen-networks/multi-party-ecdsa/blob/master/LICENSE>
 */
-
+use std::prelude::v1::*;
 use crate::protocols::multi_party_ecdsa::gg_2018::party_i::{
     verify, KeyGenBroadcastMessage1, KeyGenDecommitMessage1, Keys, LocalSignature, Parameters,
     PartyPrivate, Phase5ADecom1, Phase5Com1, SharedKeys, SignKeys,

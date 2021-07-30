@@ -13,6 +13,7 @@
 
     @license GPL-3.0+ <https://github.com/KZen-networks/multi-party-ecdsa/blob/master/LICENSE>
 */
+use std::prelude::v1::*;
 use std::cmp;
 
 use centipede::juggling::proof_system::{Helgamalsegmented, Witness};

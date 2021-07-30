@@ -21,7 +21,7 @@
 //! Statement: (c, pk, Q, G)
 //! witness (x, r, sk) such that Q = xG, c = Enc(pk, x, r) and Dec(sk, c) = x.
 //! note that because of the range proof, the proof has a slack in the range: x in [-q^3, q^3]
-
+use std::prelude::v1::*;
 use curv::arithmetic::traits::*;
 use curv::cryptographic_primitives::hashing::hash_sha256::HSha256;
 use curv::cryptographic_primitives::hashing::traits::Hash;

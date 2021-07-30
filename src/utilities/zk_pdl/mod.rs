@@ -19,7 +19,7 @@
 //! Statement: (c, pk, Q, G)
 //! witness (x, r, sk) such that Q = xG, c = Enc(pk, x, r) and Dec(sk, c) = x.
 //! note that because of the range proof, the proof is sound only for x < q/3
-
+use std::prelude::v1::*;
 use std::ops::Shl;
 
 use curv::arithmetic::traits::*;

@@ -72,6 +72,7 @@ pub struct KeyGenStage1Result {
 //    ui and then publish the Commitment part.
 // 2. It will create a Paillier Keypair and publish the public key for that.
 //
+use std::prelude::v1::*;
 pub fn keygen_stage1(input: &KeyGenStage1Input) -> KeyGenStage1Result {
     // Paillier keys and various other values
     // party_keys.ek is a secret value and it should be encrypted
