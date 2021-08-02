@@ -8,6 +8,9 @@ use multi_party_ecdsa::protocols::multi_party_ecdsa::gg_2020::party_i::{
     SignBroadcastPhase1, SignDecommitPhase1, SignKeys, SignatureRecid,
 };
 
+use multi_party_ecdsa::curv::elliptic::curves::traits::ECScalar;
+use multi_party_ecdsa::curv::elliptic::curves::traits::ECPoint;
+
 use std::prelude::v1::*;
 use std::panic::{catch_unwind, resume_unwind, AssertUnwindSafe};
 
