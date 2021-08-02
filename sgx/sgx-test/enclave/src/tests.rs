@@ -18,8 +18,10 @@ pub fn keys(){
     println!("start A");
     let u = FE::new_random();
     println!("start B");
-    let y = GE::generator() * u;
+    let g = GE::generator();
     println!("start C");
+    let y = g * u;
+    println!("start D");
     //let party_keys = Keys::create(0usize);
     //println!("party_keys = {:?}",party_keys);
 }
