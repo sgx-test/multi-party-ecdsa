@@ -1,7 +1,7 @@
 use multi_party_ecdsa::*;
 
 use multi_party_ecdsa::protocols::multi_party_ecdsa::gg_2020::orchestrate::*;
-use multi_party_ecdsa::curv::*;
+use multi_party_ecdsa::curv::elliptic::curves::secp256_k1::{FE,GE};
 
 use multi_party_ecdsa::protocols::multi_party_ecdsa::gg_2020::party_i::{
     KeyGenBroadcastMessage1, KeyGenDecommitMessage1, Keys, LocalSignature, Parameters, SharedKeys,
@@ -12,8 +12,13 @@ use std::prelude::v1::*;
 use std::panic::{catch_unwind, resume_unwind, AssertUnwindSafe};
 
 pub fn keys(){
-    let party_keys = Keys::create(0usize);
-    println!("party_keys = {:?}",party_keys);
+    println!("start A");
+    let u = FE::new_random();
+    println!("start B");
+    let y = GE::generator() * u;
+    println!("start C");
+    //let party_keys = Keys::create(0usize);
+    //println!("party_keys = {:?}",party_keys);
 }
 
 
