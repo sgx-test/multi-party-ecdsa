@@ -53,6 +53,7 @@ use curv::elliptic::curves::secp256_k1::{FE, GE};
 use paillier::*;
 use serde::{Deserialize, Serialize};
 use zk_paillier::zkproofs::DLogStatement;
+use secp256k1::curve::Scalar;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KeyGenStage1Input {
