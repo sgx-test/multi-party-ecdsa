@@ -22,6 +22,8 @@
 extern crate sgx_tstd as std;
 use std::prelude::v1::*;
 
+pub use curv;
+
 pub mod protocols;
 pub mod utilities;
 #[derive(Copy, PartialEq, Eq, Clone, Debug)]
