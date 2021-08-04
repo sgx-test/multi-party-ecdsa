@@ -569,7 +569,7 @@ pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
     compact.extend(bytes_r.iter());
 
     let scalar_s: Scalar = s.get_element().into();
-    let bytes_s = &s.scalar_s.b32();
+    let bytes_s = &scalar_s.b32();
     compact.extend(vec![0u8; 32 - bytes_s.len()]);
     compact.extend(bytes_s.iter());
 
