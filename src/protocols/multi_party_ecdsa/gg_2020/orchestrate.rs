@@ -53,6 +53,7 @@ use curv::elliptic::curves::secp256_k1::{FE, GE};
 use paillier::*;
 use serde::{Deserialize, Serialize};
 use zk_paillier::zkproofs::DLogStatement;
+use secp256k1::curve::Scalar;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KeyGenStage1Input {
@@ -537,7 +538,7 @@ pub fn sign_stage7(input: &SignStage7Input) -> Result<SignStage7Result, ErrorTyp
     Ok(SignStage7Result { local_sig: sig })
 }
 pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
-    use secp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature};
+    use libsecp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature};
 
     let raw_msg = BigInt::to_bytes(&msg);
     let mut msg: Vec<u8> = Vec::new(); // padding
@@ -561,11 +562,13 @@ pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
     let pk = PublicKey::parse_slice(&raw_pk, Some(PublicKeyFormat::Full)).unwrap();
 
     let mut compact: Vec<u8> = Vec::new();
-    let bytes_r = &r.get_element()[..];
+    let scalar_r: Scalar = r.get_element().into();
+    let bytes_r = &scalar_r.b32();
     compact.extend(vec![0u8; 32 - bytes_r.len()]);
     compact.extend(bytes_r.iter());
 
-    let bytes_s = &s.get_element()[..];
+    let scalar_s: Scalar = s.get_element().into();
+    let bytes_s = &scalar_s.b32();
     compact.extend(vec![0u8; 32 - bytes_s.len()]);
     compact.extend(bytes_s.iter());
 
