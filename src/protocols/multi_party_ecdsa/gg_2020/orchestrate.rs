@@ -538,7 +538,7 @@ pub fn sign_stage7(input: &SignStage7Input) -> Result<SignStage7Result, ErrorTyp
     Ok(SignStage7Result { local_sig: sig })
 }
 pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
-    use libsecp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature};
+    use secp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature};
 
     let raw_msg = BigInt::to_bytes(&msg);
     let mut msg: Vec<u8> = Vec::new(); // padding
