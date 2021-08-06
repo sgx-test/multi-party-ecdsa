@@ -18,6 +18,8 @@ pub mod protocols;
 pub mod utilities;
 pub use curv;
 pub use secp256k1;
+pub use paillier;
+pub use zk_paillier;
 
 #[derive(Copy, PartialEq, Eq, Clone, Debug)]
 pub enum Error {
