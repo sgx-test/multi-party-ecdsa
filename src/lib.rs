@@ -16,6 +16,10 @@
 
 pub mod protocols;
 pub mod utilities;
+pub use curv;
+pub use crypto;
+pub use secp256k1;
+
 #[derive(Copy, PartialEq, Eq, Clone, Debug)]
 pub enum Error {
     InvalidKey,
