@@ -191,7 +191,7 @@ pub fn poll_for_p2p(
 
 #[allow(dead_code)]
 pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
-    use secp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature};
+    use secp256k1::{verify, Message, PublicKey, PublicKeyFormat, Signature, curve::Scalar};
 
     let raw_msg = BigInt::to_bytes(&msg);
     let mut msg: Vec<u8> = Vec::new(); // padding
@@ -206,11 +206,13 @@ pub fn check_sig(r: &FE, s: &FE, msg: &BigInt, pk: &GE) {
     let pk = PublicKey::parse_slice(&raw_pk, Some(PublicKeyFormat::Full)).unwrap();
 
     let mut compact: Vec<u8> = Vec::new();
-    let bytes_r = &r.get_element()[..];
+    let scalar_r: Scalar = r.get_element().into();
+    let bytes_r = &scalar_r.b32();
     compact.extend(vec![0u8; 32 - bytes_r.len()]);
     compact.extend(bytes_r.iter());
 
-    let bytes_s = &s.get_element()[..];
+    let scalar_s: Scalar = s.get_element().into();
+    let bytes_s = &scalar_s.b32();
     compact.extend(vec![0u8; 32 - bytes_s.len()]);
     compact.extend(bytes_s.iter());
 
