@@ -28,7 +28,8 @@ use curv::cryptographic_primitives::secret_sharing::feldman_vss::VerifiableSS;
 use curv::elliptic::curves::secp256_k1::{FE, GE};
 use paillier::EncryptionKey;
 use zk_paillier::zkproofs::DLogStatement;
-
+#[macro_use]
+use serde_derive;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct PartyKeyPair {
