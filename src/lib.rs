@@ -23,7 +23,7 @@ extern crate sgx_tstd as std;
 use std::prelude::v1::*;
 
 pub use curv;
-
+pub use crypto;
 pub mod protocols;
 pub mod utilities;
 

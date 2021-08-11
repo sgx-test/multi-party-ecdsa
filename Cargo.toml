@@ -37,7 +37,7 @@ zeroize = { version = "1", git = "https://github.com/sgx-test/ff-zeroize-sgx" }
 libsecp256k1 = { version = "0.3", branch = "0.3.5-sgx", git = "https://github.com/sgx-test/libsecp256k1-sgx" }
 curv = { git = "https://github.com/sgx-test/curv-sgx", version = "0.7", branch = "0.7.0-nosecp", features = ["num-bigint"] }
 sgx_tstd = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
-
+rust-crypto = { version = "^0.2", git = "https://github.com/mesalock-linux/rust-crypto-sgx" }
 [dependencies.centipede]
 git = "https://github.com/sgx-test/centipede-sgx"
 branch = "0.2.12-sgx"
