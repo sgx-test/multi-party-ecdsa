@@ -24,6 +24,7 @@ use std::prelude::v1::*;
 
 pub use curv;
 pub use crypto;
+pub use secp256k1;
 pub mod protocols;
 pub mod utilities;
 
