@@ -140,6 +140,33 @@ pub fn generate_h1_h2_N_tilde() -> (BigInt, BigInt, BigInt, BigInt) {
     (ek_tilde.n, h1, h2, xhi)
 }
 
+pub fn split_fe_to_random_vec(input: &FE, share_count: u16) -> Vec<FE> {
+    let denum = *input;
+    loop {
+        let mut split_fe_vec = Vec::new();
+        for _ in 1..=share_count - 1 {
+            let rand_fe = FE::new_random();
+            split_fe_vec.push(rand_fe);
+        }
+
+        let zero = FE::zero();
+        let head = split_fe_vec.iter().fold(zero, |acc, x| acc.add(&x.get_element()));
+        let tail_fe = denum.sub(&head.get_element());
+        split_fe_vec.push(tail_fe);
+
+        // check sum
+        let sum = split_fe_vec.iter().fold(zero, |acc, x| acc.add(&x.get_element()));
+        assert!(sum.to_big_int().eq(&denum.to_big_int()), "w_i slices failed");
+
+        // ensure the tail_fe is not zero.
+        if tail_fe.eq(&FE::zero()) {
+            continue;
+        } else {
+            return split_fe_vec;
+        }
+    }
+}
+
 impl Keys {
     pub fn create(index: usize) -> Self {
         let u = FE::new_random();

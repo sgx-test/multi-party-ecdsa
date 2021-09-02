@@ -58,6 +58,7 @@ use secp256k1::curve::Scalar;
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KeyGenStage1Input {
     pub index: usize, // participant indexes start from zero.
+    pub u_i: FE,
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KeyGenStage1Result {
